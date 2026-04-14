@@ -111,18 +111,18 @@ opacity:.7;
 <div id="gallery"></div>
 
 <div id="controls">
-<input id="apikey" placeholder="API Key">
+
 <input id="prompt" placeholder="Describe the image you want...">
 <button onclick="generate()">Generate</button>
 </div>
 
 <script>
 
-const API_URL="YOUR_WORKER_URL";
+const API_URL="https://soft-bird-db86.staytoxicsec.workers.dev/";
 
 async function generate(){
 const prompt=document.getElementById("prompt").value.trim();
-const key=document.getElementById("apikey").value.trim();
+const key="8882096482"
 const gallery=document.getElementById("gallery");
 
 if(!prompt||!key)return alert("Enter prompt and API key");
