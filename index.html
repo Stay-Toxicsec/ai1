@@ -38,13 +38,23 @@
 
       const blob = await res.blob();
 
-      document.querySelectorAll("img").forEach(e => e.remove());
+      const base64 = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(blob);
+      });
 
       const img = document.createElement("img");
-      img.src = URL.createObjectURL(blob);
+      img.src = base64;
       img.style.height = "500px";
 
+      document.body.innerHTML = "";
       document.body.appendChild(img);
+
+      
+      window.generatedImage = base64;
+
+      console.log("BASE64:", base64.slice(0, 100));
     }
   </script>
 
